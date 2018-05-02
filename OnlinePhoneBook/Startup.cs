@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using OnlinePhoneBook.Providers;
 
 [assembly: OwinStartup(typeof(OnlinePhoneBook.Startup))]
 namespace OnlinePhoneBook

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OnlinePhoneBook.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-/*
+
 namespace OnlinePhoneBook.Controllers
 {
     [RoutePrefix("api/Contact")]
@@ -12,11 +13,20 @@ namespace OnlinePhoneBook.Controllers
     {
         [Authorize]
         [Route("")]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAllContacts()
         {
-           // var db = new 
+            using (var db = new AuthContext())
+            {
+                var query = db.ContactList.OrderBy(o => o.Name).ToList();
+                if (db == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(query);
+                }
+            }
         }
-
     }
 }
-*/
